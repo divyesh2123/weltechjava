@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="inp" />
+    <div id="display"> </div>
+    <button id="btn">Add</button>
+
+    <script>
+      //   let defaultarrvalue = ["astra", "book", "paper", "bus", "deep", "nehal"];
+      //   console.log(defaultarrvalue);
+
+      //   let dummy = ["arc", ...defaultarrvalue];
+      //   console.log(dummy);
+
+      
+      let arc = ["astra", "book", "paper", "bus", "deep", "nehal"];
+      console.log(arc);
+     
+      
+      const myfun = () => {
+      
+        let inp = document.getElementById("inp");
+        let inpdata = inp.value;
+
+        arc.push(inpdata);
+
+       console.log(arc);
+
+        
+      };
+      btn.addEventListener("click", (e) => myfun(e));
+
+    </script>
+  </body>
+</html>
