@@ -12,11 +12,24 @@
     <div id="view"></div>
     <script>
         let myitems = []
+        let index= -1;
 
         function saveItem()
         {
             let item = document.getElementById("display").value;
+            if(index <0)
+            {
+         
             myitems.push(item);
+            }
+            else
+            { 
+                myitems.splice(index,1,item);
+                index = -1;
+               //myitems[index] = item;
+            }
+
+           
             display();
 
         }
@@ -25,10 +38,18 @@
         {
         let newarray = myitems.map(function(value,index) {
 
-            return(`<div>${value}<button>delete</button></div>`)
+            return(`<div>${value}<button>delete</button>
+                 <button onclick="editRecord(${index})">edit</button></div>`)
         })
 
         document.getElementById("view").innerHTML = newarray.join(" ");
+        }
+
+        function editRecord(a)
+        {
+            index = a;
+
+            document.getElementById("display").value = myitems[a];
         }
 
 

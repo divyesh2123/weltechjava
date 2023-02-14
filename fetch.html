@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text"  id="searchTerm"/>
+
+    <button onclick="SearchData()">Search</button>
+    <button onclick="ClearFilter()">Clear</button>
+
+
+    <table id="display"></table>
+    <script>
+
+        let originalArray = [];
+
+        function ClearFilter()
+        {
+
+            displayData(originalArray);
+
+        }
+        function SearchData()
+        {
+            let searchTerm = document.getElementById("searchTerm").value;
+            let myfilterArray = originalArray.filter(function(value) {
+
+                return value.username.indexOf(searchTerm) >=0;
+            });
+
+            displayData(myfilterArray);
+
+
+        }
+
+        fetch("https://jsonplaceholder.typicode.com/users").then(function(value){
+
+            return value.json()
+        }).then(function(value) {
+
+            originalArray= value;
+            displayData(value);
+            console.log(value);
+        })
+
+        function displayData(value)
+        {
+
+          let output =  value.map(function(value) {
+
+                return (`<tr><td>${value.id}</td><td>${value.company.name}</td><td>${value.username}</td><td>${value.email}</td></tr>`)
+            })
+
+
+        document.getElementById("display").innerHTML = output.join(" ");
+        }
+
+       
+    </script>
+    
+</body>
+</html>
