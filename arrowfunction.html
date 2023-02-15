@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="display"></div>
+
+    <script>
+
+        
+
+        //1
+        let num = (a)=> a*a ;
+
+        console.log(num(2));
+
+        //2
+        let num1 = num=> num*num;
+
+        console.log(num1(14));
+
+        //3
+
+        let num3 = (num)=> {
+
+            return num * num;
+        }
+
+        console.log(num3(14));
+
+        let t = [12,34,455,666];
+
+        let p = t.map((value,indx,array)=> {
+
+              return  value*2;
+        })
+
+        console.log(p);
+
+        
+
+
+    </script>
+    
+</body>
+</html>

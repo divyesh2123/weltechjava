@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        let myStudents = [
+            {
+                Id: 1,
+                Name : "Test"
+            },
+            {
+                Id: 2,
+                Name : "Test1"
+            },
+            {
+                Id: 3,
+                Name : "Test2"
+            },
+            {
+                Id: 4,
+                Name : "Test3"
+            },
+            {
+                Id: 1,
+                Name : "weltec"
+            },
+
+        ]
+
+        let d = myStudents.find((value)=> {
+
+            return value.Id == 1;
+
+        })
+
+        console.log(d);
+
+    </script>
+</body>
+</html>
