@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        
+
+        fetch("https://jsonplaceholder.typicode.com/todos")
+        .then(y=>y.json())
+        .then(y=> {
+            groupByUserWithStatus(y)
+        })
+        
+
+        function groupByUserWithStatus(data)
+        {
+
+            let myArray = data.reduce((pre,value,index,arr)=> {
+
+                debugger;
+                let finindex = pre.findIndex((a)=>{
+                    return a.userId== value.userId;
+                });
+
+                if(finindex <0)
+                {
+                    let myobj = {
+                        userId : value.userId,
+                        taskStatus : arr.some((b)=> {
+
+                            return (b.userId == value.userId && b.completed == true);
+                        })
+                    }
+                    pre.push(myobj);
+
+                }
+               
+                return pre;
+
+            },[]);
+
+            console.log(myArray);
+
+        }
+
+    </script>
+    
+</body>
+</html>
