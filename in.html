@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="display" onclick="readMore()"></div>
+
+    <script>
+let isreadMore = true;
+let mystring = "This is weltec institue for the traininThis is weltec institue for the traininThis is weltec institue for the traininThis is weltec institue for the traininThis is weltec institue for the traininThis is weltec institue for the traininThis is weltec institue for the traininThis is weltec institue for the traininThis is weltec institue for the trainin "
+ 
+        
+ function readMore()
+ {
+    isreadMore = !isreadMore;
+    if (!isreadMore)
+    {
+
+        document.getElementById("display").innerHTML = mystring.slice(0,50).concat("... readmore")
+    }
+    else
+    {
+        document.getElementById("display").innerHTML = mystring;
+    }
+
+ }
+
+ readMore();
+
+    </script>
+    
+</body>
+</html>
