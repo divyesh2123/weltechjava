@@ -36,6 +36,19 @@
             </div>
     </div>
     </nav>
+
+    <div class="row">
+
+        <div class="col-12">
+
+            <input type="text"  id="searchTerm"/>
+            <input type="button" value="search" onclick="searchItems()" />
+
+        </div>
+
+
+    </div>
+
     <div id="data" class="row"> </div>
     </div>
     <div class="modal fade" id="myModal">
@@ -63,6 +76,24 @@
         </div>  
   
     <script>
+
+
+
+        function searchItems()
+        {
+            let searchTerm = document.getElementById("searchTerm").value;
+
+          let filterProducts =  producrs.filter((value,index)=> {
+
+                return value.title.indexOf(searchTerm)>=0;
+
+            });
+
+
+            displayInformation(filterProducts,searchTerm);
+
+        }
+
         let a= [4,5,6];
         let b=a;
 
@@ -114,15 +145,52 @@
             document.getElementById("count").innerHTML = array.length;
         }
 
-        function displayInformation(data) {
+        function displayInformation(data,search) {
+
+               
+              
             producrs = data;
             let myhtml = data.map((value,index) => {
+
+                let myhtml = value.title;
+
+                if(search)
+                {
+                   myhtml =  `${value.title.slice(0, value.title.indexOf(search))} <span style="color:red">${value.title.substr(value.title.indexOf(search),search.length)} </span> ${value.title.substr(value.title.indexOf(search)+ search.length)`
+                }
+               
+
                 return (
-                    `<div class="col-4"><div class="card" ><img class="card-img-top" src="${value.image}" alt="Card image" width="200" height="400"><div class="card-body"><h4 class="card-title" id="${index}">${value.title}</h4><p class="card-text" onclick="${readMore(index)}"><div>${value.description.slice(0,20)}</div></p><button class="btn btn-primary" onclick="addToCart(${index})">Add To Cart</a></div></div></div>`
+                    `<div class="col-4"><div class="card" ><img class="card-img-top" src="${value.image}"
+                         alt="Card image" width="200" height="400">
+                         <div class="card-body"><h4 class="card-title" >${myhtml}</h4>
+                            <p class="card-text" >
+                        <div id=${index} 
+                        onclick="readMore(${index})">
+                        ${value.description.slice(0,20).concat("...readmore")}
+                        </div></p>
+                        <button class="btn btn-primary" onclick="addToCart(${index})">Add To Cart</a></div>
+                            </div></div>`
                     )
             });
 
             document.getElementById("data").innerHTML = myhtml.join(" ");
+        }
+
+        function readMore(index)
+        {
+            if( document.getElementById(index).innerHTML.lastIndexOf("readmore") >=0 )
+            {
+
+                document.getElementById(index).innerHTML =producrs[index].description.concat(" readless");
+            }
+            else
+            {
+                document.getElementById(index).innerHTML =producrs[index].description.slice(0,20).concat("  readmore");
+
+            }
+           
+           
         }
     </script>
 </body>
