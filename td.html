@@ -42,6 +42,21 @@
         <div class="col-12">
 
             <input type="text"  id="searchTerm"/>
+            <select id="mykey">
+
+                <option value="title">Title</option>
+                <option value="description">Description</option>
+
+            </select>
+
+            <select id="searchType">
+
+                <option value="start">StartWith</option>
+                <option value="end">EndWith</option>
+                <option value="contain">Contains</option>
+
+            </select>
+
             <input type="button" value="search" onclick="searchItems()" />
 
         </div>
@@ -83,9 +98,25 @@
         {
             let searchTerm = document.getElementById("searchTerm").value;
 
+            
           let filterProducts =  producrs.filter((value,index)=> {
 
-                return value.title.indexOf(searchTerm)>=0;
+                let ty = document.getElementById("searchType").value;
+                if(ty== "start")
+                {
+                    return value[document.getElementById("mykey").value].startsWith(searchTerm);
+
+                }
+                else if(ty == "end")
+                {
+                    return value[document.getElementById("mykey").value].endsWith(searchTerm) == true;
+
+                }
+                else
+                {
+                return value[document.getElementById("mykey").value].indexOf(searchTerm)>=0;
+
+                }
 
             });
 
@@ -103,6 +134,7 @@
         let array = [];
         let producrs = []
         fetch("https://fakestoreapi.com/products").then(y => y.json()).then(y => {
+            producrs = data;
             displayInformation(y)
         });
 
@@ -149,14 +181,14 @@
 
                
               
-            producrs = data;
+            
             let myhtml = data.map((value,index) => {
 
                 let myhtml = value.title;
 
                 if(search)
                 {
-                   myhtml =  `${value.title.slice(0, value.title.indexOf(search))} <span style="color:red">${value.title.substr(value.title.indexOf(search),search.length)} </span> ${value.title.substr(value.title.indexOf(search)+ search.length)`
+                   myhtml =  `${value.title.slice(0, value.title.indexOf(search))} <span style="color:red">${value.title.substr(value.title.indexOf(search),search.length)} </span>`
                 }
                
 
