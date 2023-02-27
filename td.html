@@ -58,6 +58,7 @@
             </select>
 
             <input type="button" value="search" onclick="searchItems()" />
+            <input type="button" value="search with Ignor Case" onclick="searchItemsWithIgnorCase()" />
 
         </div>
 
@@ -92,7 +93,7 @@
   
     <script>
 
-
+       
 
         function searchItems()
         {
@@ -132,9 +133,11 @@
         console.log(a);
         console.log(b);
         let array = [];
+        let myarray = [];
         let producrs = []
         fetch("https://fakestoreapi.com/products").then(y => y.json()).then(y => {
             producrs = data;
+            myarray = [...y];
             displayInformation(y)
         });
 
@@ -177,12 +180,35 @@
             document.getElementById("count").innerHTML = array.length;
         }
 
+
+        function searchItemsWithIgnorCase()
+        {
+            let searchTerm = document.getElementById("searchTerm").value;
+
+            let regular = "/" + searchTerm + "/gi";
+
+            console.log(regular);
+
+            let filterProducts1 =  myarray.filter((value,index)=> {
+
+                
+
+                return value.title.search(searchTerm) >=0;
+
+            });
+
+
+            console.log(filterProducts1);
+
+
+        }
+
         function displayInformation(data,search) {
 
                
-              
+              let t = [...data];
             
-            let myhtml = data.map((value,index) => {
+            let myhtml = t.map((value,index) => {
 
                 let myhtml = value.title;
 
