@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>JavaScript Strings</h1>
+<h2>The match() Method</h2>
+
+<p>Perform a search for "ain":</p>
+
+<p id="demo"></p>
+
+<script>
+let text = "The rain in SPAIN stays mainly in the plain";
+const myArr1 = text.matchAll(/ain/gi);
+console.log(Array.from(myArr1));
+
+const match = text.match(/ain/gi);
+
+console.log(match);
+
+</script>
+
+</body>
+</html>

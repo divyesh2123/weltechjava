@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="display"> </div>
+    <script >
+
+        let r= "This is the my javascript This is the my javascriptThis is the my javascriptThis is the my javascriptThis is the my javascriptThis is the my javascript";
+
+        document.getElementById("display").innerHTML = `<p onclick="readMore()">${r.slice(0,29).concat("...readmore")}</p>`
+        
+        function  readMore() {
+
+            if(document.getElementById("display").innerHTML.indexOf("readmore") >= 0)
+            {
+                document.getElementById("display").innerHTML  = `<p onclick="readMore()">${r.concat("...readless")}</p>`;
+
+            }
+            else
+            {
+                document.getElementById("display").innerHTML  = `<p onclick="readMore()">${r.slice(0,29).concat("...readmore")}</p>`;
+            }
+
+        }
+  
+  
+  </script>
+    
+</body>
+</html>
