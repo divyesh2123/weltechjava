@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    
+    <label>
+        Title
+    </label>
+
+    <input type="text" id="title" />
+
+
+    <label>
+        FirstName
+    </label>
+
+    <input type="text" id="firstName" />
+
+    <label>
+        LastName
+    </label>
+
+    <input type="text" id="lastName" />
+
+    <label>
+        Email
+    </label>
+
+    <input type="text" id="email" />
+
+    <label>
+        Password    
+    </label>
+
+    <input type="text" id="password" />
+
+    <label>
+        ConfirmPassword
+    </label>
+
+    <input type="text" id="confirmPassword" />
+
+
+
+    <label>
+        Terms
+    </label>
+
+    <input type="checkbox" id="acceptTerms" />
+
+
+    <input type="button"  value="Save" onclick="SaveInformation()"/>
+
+    <script>
+        //https://real-pear-fly-kilt.cyclic.app/accounts/authenticate
+        //{
+   //"email": "dtest@gmai.com",
+//"password":"pass12345"
+//}
+
+        function SaveInformation()
+        {
+            
+            let myObj = {
+
+                title : document.getElementById("title").value,
+                
+                firstName : document.getElementById("firstName").value,
+                
+                lastName : document.getElementById("lastName").value,
+                
+                email : document.getElementById("email").value,
+                
+                password : document.getElementById("password").value,
+                
+                confirmPassword : document.getElementById("confirmPassword").value,
+
+                acceptTerms: document.getElementById("acceptTerms").checked
+            }
+
+
+            fetch("https://real-pear-fly-kilt.cyclic.app/accounts/register",{
+
+                method : "POST",
+                body :   JSON.stringify(myObj) ,
+                headers : {
+                   'Accept': 'application/json',
+                   "Content-Type": 'application/json'
+                }
+                
+                
+            }).then(y=>y.json()).then(y=> {
+
+                console.log(y);
+            })
+
+            console.log(myObj);
+
+        }
+
+
+    </script>
+
+    
+</body>
+</html>

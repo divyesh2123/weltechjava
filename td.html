@@ -93,14 +93,22 @@
   
     <script>
 
-       
+let a= [4,5,6];
+        let b=a;
+
+        a[0]=12;
+        console.log(a);
+        console.log(b);
+        let array = [];
+        let myarray = [];
+        let producrs = []
 
         function searchItems()
         {
             let searchTerm = document.getElementById("searchTerm").value;
 
             
-          let filterProducts =  producrs.filter((value,index)=> {
+          let filterProducts =  myarray.filter((value,index)=> {
 
                 let ty = document.getElementById("searchType").value;
                 if(ty== "start")
@@ -126,15 +134,7 @@
 
         }
 
-        let a= [4,5,6];
-        let b=a;
-
-        a[0]=12;
-        console.log(a);
-        console.log(b);
-        let array = [];
-        let myarray = [];
-        let producrs = []
+       
         fetch("https://fakestoreapi.com/products").then(y => y.json()).then(y => {
             producrs = data;
             myarray = [...y];
@@ -185,7 +185,7 @@
         {
             let searchTerm = document.getElementById("searchTerm").value;
 
-            let regular = "/" + searchTerm + "/gi";
+            let regular = "/" + searchTerm + "/i";
 
             console.log(regular);
 
@@ -193,7 +193,7 @@
 
                 
 
-                return value.title.search(searchTerm) >=0;
+                return value.title.search(regular) >=0;
 
             });
 
@@ -214,7 +214,9 @@
 
                 if(search)
                 {
-                   myhtml =  `${value.title.slice(0, value.title.indexOf(search))} <span style="color:red">${value.title.substr(value.title.indexOf(search),search.length)} </span>`
+                   myhtml =  `${value.title.slice(0, value.title.indexOf(search))} 
+                   <span style="color:red">${value.title.substr(value.title.indexOf(search))} 
+                    </span>`
                 }
                
 
