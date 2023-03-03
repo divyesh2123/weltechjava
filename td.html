@@ -46,6 +46,7 @@
 
                 <option value="title">Title</option>
                 <option value="description">Description</option>
+                <option value="price">Price</option>
 
             </select>
 
@@ -54,6 +55,10 @@
                 <option value="start">StartWith</option>
                 <option value="end">EndWith</option>
                 <option value="contain">Contains</option>
+                <option value="great">Great</option>
+                <option value="less">Less</option>
+                <option value="eq">eq</option>
+                <option value="not">not</option>
 
             </select>
 
@@ -120,6 +125,11 @@ let a= [4,5,6];
                 {
                     return value[document.getElementById("mykey").value].endsWith(searchTerm) == true;
 
+                }
+                else if(ty == "great")
+                {
+
+                    return parseFloat(value[document.getElementById("mykey").value]) > parseFloat(searchTerm);
                 }
                 else
                 {
@@ -212,8 +222,33 @@ let a= [4,5,6];
 
                 let myhtml = value.title;
 
+                let mydi = value.title;
+
                 if(search)
                 {
+
+                let reg =  value.title;
+                 let p = Array.from(value.title.matchAll(search));
+
+                 console.log(p);
+
+                mydi=  p.reduce((pre,value1,index,array)=> {
+
+                    let t = `${pre.slice(0,value1["index"])}  
+                    <strong>${pre.substr(value1["index"],value1[0].length)}</strong>   
+                     ${pre.substr(value1["index"] + value1[0].length)} `
+                    
+                 
+                    
+                    
+
+
+                    return t;
+                 },value.title)
+
+                 console.log(p);
+
+
                    myhtml =  `${value.title.slice(0, value.title.indexOf(search))} 
                    <span style="color:red">${value.title.substr(value.title.indexOf(search))} 
                     </span>`
@@ -223,10 +258,12 @@ let a= [4,5,6];
                 return (
                     `<div class="col-4"><div class="card" ><img class="card-img-top" src="${value.image}"
                          alt="Card image" width="200" height="400">
-                         <div class="card-body"><h4 class="card-title" >${myhtml}</h4>
+                         <div class="card-body"><h4 class="card-title" >${mydi}</h4>
                             <p class="card-text" >
+                                ${value.price}
                         <div id=${index} 
                         onclick="readMore(${index})">
+
                         ${value.description.slice(0,20).concat("...readmore")}
                         </div></p>
                         <button class="btn btn-primary" onclick="addToCart(${index})">Add To Cart</a></div>
