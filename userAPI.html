@@ -27,7 +27,7 @@
 
 //https://jsonplaceholder.typicode.com/users
        
-fetch("https://jsonplaceholder.typicode.com/comments").then(y=>y.json()).then(y=> {
+fetch("https://jsonplaceholder.typicode.com/users").then(y=>y.json()).then(y=> {
 
   //  let d = y.unshift(y[0]);
     displayInformation(y);
@@ -52,11 +52,30 @@ function displayInformation(data)
         if(index == 0)
         {
            th += `<th>${key}</th>`
+
+           if( typeof element[key] == "object" )
+           {
+            dis += `<td> ${toDisplayObject(element[key])}</td>` 
+
+           }
+           else
+           {
+
             dis += `<td>${element[key]}</td>` 
+           }
         }
         else
         {
+            if( typeof element[key] == "object" )
+           {
+            dis += `<td> ${toDisplayObject(element[key])}</td>` 
+
+           }
+           else
+           {
+
             dis += `<td>${element[key]}</td>` 
+           }
 
         }
 
@@ -82,6 +101,33 @@ function displayInformation(data)
 
     document.getElementById("mydisplay").innerHTML = mapdata.join("");
 
+
+
+}
+
+
+function toDisplayObject(myobj)
+{
+    let myinnerTable = `<table><tr>`
+
+        for (const key in myobj) {
+
+            if(typeof myobj[key] == "object" )
+            {
+                myinnerTable += `<td>${toDisplayObject(myobj[key])}</td>`
+
+            }
+            else
+            {
+            myinnerTable += `<td>${myobj[key]}</td>`
+
+            }
+        }
+
+
+        myinnerTable += '</tr></table>'
+
+        return myinnerTable;
 
 
 }
