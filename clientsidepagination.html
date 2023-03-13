@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table id="display"></table>
+    <select>
+        <option>5</option>
+        <option>10</option>
+        <option>15</option>
+        <option>20</option>
+    </select>
+    <div id="pageer"> </div>
+    <script>
+
+        let perPageSize = 10;
+        let myArray = [];
+        //https://jsonplaceholder.typicode.com/comments
+
+
+        fetch("https://63ac1dfa34c46cd7ae77dabf.mockapi.io/api/news")
+        .then(y=>y.json())
+        .then(y=> {
+            myArray= y;
+            displayRecord(y,0,11);
+            displayPagination(y);
+        })
+
+
+        function displayRecord(data,start,end)
+        {
+
+         let d=   data.slice(start,end).map((value)=> {
+
+                return `<tr><td>${value.id}</td><td>${value.publishedBy}</td><td>${value.title}</td></tr>`
+            })
+
+            document.getElementById("display").innerHTML = d.join(" ");
+
+        }
+
+        function displayPagination(data)
+        {
+            let html ='';
+            for(let i =1;i<= Math.ceil(data.length/perPageSize);i++)
+            {
+                html +=`<button onclick='pagination(${i})'>${i}</button>`
+
+
+            }
+
+            document.getElementById("pageer").innerHTML = html;
+        }
+
+        function pagination(currentPage)
+        {
+            let start = (currentPage-1)* perPageSize +1 ;
+            let end =  start+ perPageSize;
+
+            displayRecord(myArray,start,end);
+        }
+
+
+    </script>
+    
+</body>
+</html>
