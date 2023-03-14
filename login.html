@@ -39,7 +39,10 @@ headers : {
 
 }).then(y=>y.json()).then(y=> {
 
+    localStorage.setItem("token",y.jwtToken)
 console.log(y);
+
+window.location.href = "tokenbaseddata.html";
 })
 
 console.log(myObj);

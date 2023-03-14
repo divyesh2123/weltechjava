@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" value="" id="fname" />
+    <input type="text" value="" id="lname" />
+
+    <input type="button" onclick="Save()" value="Save"/>
+
+    <script>
+
+        localStorage.setItem("Country","IN");
+        localStorage.setItem("Country1","IN");
+        
+     //   localStorage.clear(); // This is for clear the all items
+
+     //localStorage.removeItem("Country");
+
+     console.log();
+
+        function Save()
+        {
+            let employeeName = {
+
+                fname : document.getElementById("fname").value,
+                lname:document.getElementById("lname").value
+
+            }
+
+            let myarray= [];
+
+            let d = JSON.parse(localStorage.getItem("employees"));
+
+            
+            if(!Array.isArray(d))
+            {
+               
+                myarray.push(employeeName);
+                localStorage.setItem("employees", JSON.stringify(myarray));
+
+            }
+            else
+            {
+                myarray =d;
+                myarray.push(employeeName);
+                localStorage.setItem("employees", JSON.stringify(myarray));
+
+            }
+
+         
+
+        }
+
+    </script>
+    
+</body>
+</html>
