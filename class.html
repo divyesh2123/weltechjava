@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button name="test" id="btn" a="5" >DisplayInformation</button>
+
+   <script src="script1.js" > </script>
+     <script src="script2.js" ></script>
+
+    <script>
+        
+        //Enc
+        class DisplayInfomration
+        {
+
+            name = "arrow";
+
+            constructor()
+            {
+
+                this.display = this.display.bind(this);
+
+            }
+           display()
+            {
+                console.log(this.name);
+
+            }
+
+            arrow = ()=> {
+
+                console.log(this.name);
+
+            }
+
+
+        }
+
+        let d = new DisplayInfomration();
+
+      
+
+        document.getElementById("btn").addEventListener("click",d.display);
+       
+        
+   </script>
+    
+</body>
+</html>
