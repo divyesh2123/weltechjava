@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- {
+        fname : 
+        lname :
+        mname
+        address : {
+    
+        address1: "
+    }
+    
+    
+    }
+    <form onsubmit="saveData(event)"> -->
+
+        <input type="hidden" value="-1"  id="index"/>
+        <input type="text" name="fname" id="fname" />
+
+        <input type="text" name="lname" id="lname" />
+
+
+        <input type="submit" value="Save" />
+
+
+    </form>
+
+    <table id="display">
+
+
+    </table>
+
+    <script>
+
+        function saveData(event)
+        {
+            event.preventDefault();
+
+            let myarray = JSON.parse(localStorage.getItem("user")) || [];
+
+
+            if(document.getElementById("index").value  >=0)
+            {
+        
+       myarray[document.getElementById("index").value].fname =
+        document.getElementById("fname").value;
+     myarray[document.getElementById("index").value].lname =
+      document.getElementById("lname").value;
+            }
+            else
+            {
+                 
+            let myobj = {
+                fname : document.getElementById("fname").value,
+                lname: document.getElementById("lname").value
+
+            }
+
+          
+            myarray.push(myobj)
+
+           
+            }
+
+            document.getElementById("index").value = -1;
+
+            localStorage.setItem("user", JSON.stringify(myarray));         
+
+            display();
+
+        }
+
+        display();
+
+        function removeItem(index)
+        {
+            let myarray = JSON.parse(localStorage.getItem("user")) || [];
+
+            myarray.splice(index,1);
+
+
+            localStorage.setItem("user", JSON.stringify(myarray));
+
+            display();
+
+
+        }
+
+        function editData(index)
+        {
+            let myarray = JSON.parse(localStorage.getItem("user")) || [];
+
+            document.getElementById("fname").value =myarray[index].fname;
+            document.getElementById("lname").value = myarray[index].lname;
+            document.getElementById("index").value = index;
+
+
+        }
+
+        function display()
+        {
+            let myarray = JSON.parse(localStorage.getItem("user")) || [];
+
+            console.log(myarray);
+
+            let myhtml = myarray.map((value,index)=> {
+
+                return (`<tr><td>${value.fname}</td><td>${value.lname}</td>
+                        <td><button onclick=removeItem(${index})>Delete</button><button onclick=editData(${index})>Edit</button></td>
+                    </tr>`)
+
+            }).join(" ");
+
+
+            document.getElementById("display").innerHTML = myhtml;
+
+        }
+
+
+    </script>
+
+
+</body>
+</html>
