@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" value=""  onkeypress="myfunction(event)"/>
+
+    <script>
+
+        function myfunction(e)
+        {
+            if( !(e.key >= '0' && e.key <= '9'))
+            {
+            e.returnValue = false;
+            }
+            console.log(e);
+        }
+
+
+
+    </script>
+    
+</body>
+</html>
