@@ -1,0 +1,29 @@
+<!DOCTYPE html> 
+<html> 
+<body> 
+<h1>HTML DOM Events</h1>
+<h2>The onseeking Event</h2>
+
+<p>Assign an "onseeking" event to a video element:</p>
+
+<video controls onseeking="myFunction(event)">
+  <source src="https://www.w3schools.com/jsref/mov_bbb.mp4" type="video/mp4">
+  <source src="https://www.w3schools.com/jsref/mov_bbb.mp4" type="video/ogg">
+  Your browser does not support HTML5 video.
+</video>
+
+<p>Video courtesy of <a href="https://www.bigbuckbunny.org/" target="_blank">Big Buck Bunny</a>.</p>
+
+<p>Try to move to a new position in the video.</p>
+
+<p id="demo"></p>
+
+<script>
+function myFunction(event) {
+    console.log(event);
+  document.getElementById("demo").innerHTML +=  "Seek operation began! ";
+}
+</script>
+
+</body> 
+</html>
