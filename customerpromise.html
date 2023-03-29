@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="file" id="myfile" />
+
+    <input type="button" onclick="SaveMyFile()" value="Save" />
+
+
+    <script>
+
+        function SaveMyFile()
+        {
+            var d= document.getElementById("myfile").files[0];
+        
+            let prmise = new Promise((rs,fai)=> {
+
+                let fileReader= new FileReader();
+
+                fileReader.readAsDataURL(d);
+
+                fileReader.onload = ()=> {
+
+                    let result = fileReader.result;
+                    rs(result);
+
+                }
+
+            });
+       
+            prmise.then(y=> {
+                localStorage.setItem("myfile",y);
+            })
+       
+        }
+
+
+    </script>
+
+    
+</body>
+</html>
