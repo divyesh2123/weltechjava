@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="display"></div>
+    <script>
+
+        let user = JSON.parse(localStorage.getItem("user"));
+
+        let files = JSON.parse(localStorage.getItem(user.email));
+
+        let myimage = files.map((y)=> {
+
+            return(`<div><img src=${y.file}><button>Like</button></div>`)
+
+        })
+
+        document.getElementById("display").innerHTML = myimage.join("");
+    </script>
+</body>
+</html>

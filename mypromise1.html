@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        let d= new Promise(function(re,rej){
+
+            try
+            {
+                let d1=5
+                let d= d1.toLocaleLowerCase();
+            setTimeout(()=> {
+
+                re("This is the data")
+            },5000)
+        }
+        catch
+        {
+            rej("This is the error")
+        }
+        
+        })
+
+        d.then(y=> {
+            alert("This is the data from promise")
+        }).catch(y=> {
+            alert(y)
+        })
+
+        
+
+        alert("This is the page data");
+
+    </script>
+</body>
+</html>
