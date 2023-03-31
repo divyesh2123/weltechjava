@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" value="" id="name" />
+
+    <input type="hidden" id="index"  value="-1"/>
+
+    <input type="button" value="save" onclick="savedata()" />
+
+    <div id="display"></div>
+    <script>
+
+        display();
+
+        function editSave(index)
+        {
+           
+            document.getElementById("index").value = index;
+            let da = JSON.parse(localStorage.getItem("items")) || [];
+
+            document.getElementById("name").value = da[index];
+
+        }
+
+        function savedata()
+        {
+            let i = document.getElementById("index").value;
+            let n = document.getElementById("name").value;
+           let da = JSON.parse(localStorage.getItem("items")) || [];
+if(i == -1)
+{
+    da.push(n);
+    
+}
+else
+{
+    da[i]= n;
+}
+
+document.getElementById("index").value = -1;
+           
+           
+
+            localStorage.setItem("items",JSON.stringify(da));
+
+            display();
+
+        }
+
+        function display()
+        {
+            let da = JSON.parse(localStorage.getItem("items")) || [];
+         let html =  da.map((element,index)=> {
+
+            return (`<div>${element}
+                <button onclick="deleteData(${index})">delete</button> <button onclick="editSave(${index})">edit</button></div>`)
+
+           }) 
+
+        document.getElementById("display").innerHTML = html.join(" ");
+        }
+
+        function deleteData(index)
+        {
+            let d = JSON.parse(localStorage.getItem("items"));
+
+            d.splice(index,1);
+
+            localStorage.setItem("items",JSON.stringify(d));
+            display();
+
+        }
+      
+    </script>
+    
+</body>
+</html>

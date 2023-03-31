@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <video id="video" width="320" height="240" controls onpause="storedata(event)" oncanplay="myPlayVideo()">
+        <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
+        <source src="https://www.w3schools.com/html/movie.ogg" type="video/ogg">
+      Your browser does not support the video tag.
+     </video>
+
+     <script>
+
+        let userdetails =  JSON.parse(localStorage.getItem("user"))
+        
+        function myPlayVideo()
+        {
+            let myfiles = 
+                JSON.parse(localStorage.getItem(userdetails.email+ "video")) || [];
+
+            let myduration = myfiles.find((value)=> {
+                return value.Id == "video";
+            });
+
+            document.getElementById("video").currentTime = myduration.lastplayedtime;
+
+        }
+        
+        function storedata(event)
+        {
+            let myfiles = 
+                JSON.parse(localStorage.getItem(userdetails.email+ "video")) || [];
+
+
+                let myobj = {
+
+                    Id: "video",
+                    lastplayedtime : document.getElementById("video").currentTime,
+                  
+                }
+
+                myfiles.push(myobj);
+
+                localStorage.setItem(userdetails.email+ "video",JSON.stringify(myfiles));
+
+            console.log(event);
+
+        }
+
+
+     </script>
+    
+</body>
+</html>
