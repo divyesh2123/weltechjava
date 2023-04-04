@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    
+
+        <input type="text" value="" id="email" />
+        <input type="password" value="" id="password" />
+
+        <input type="button" value="Save" onclick="SaveData()" />
+    
+
+    <script>
+
+        
+
+        function SaveData()
+        {
+            let obj = {
+                email : document.getElementById("email").value,
+                password: document.getElementById("password").value
+            }
+
+         fetch("https://real-pear-fly-kilt.cyclic.app/accounts/authenticate",
+         {
+            headers: {
+                'Content-Type' : "application/json"
+            },
+            body : JSON.stringify(obj),
+            method: "post"
+
+         }).then(y=> y.json())
+            .then(y=> {
+
+                    localStorage.setItem("token",JSON.stringify(y));
+            // window.location.href = "das.html";
+            })
+
+        }
+
+    </script>
+    
+</body>
+</html>

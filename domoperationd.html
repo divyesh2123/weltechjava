@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+        <input type="text" id="txt" />
+
+        <input type="button"  value="Save" 
+        onclick="SaveInformation()" >
+
+        <input type="text" id="increment" />
+
+        <input type="button"  value="AllIncrement" 
+        onclick="AllIncrement()" >
+
+
+        <div id="display"></div>
+
+    <script>
+
+        
+function SaveInformation()
+{   
+
+let mycurrentvalue   = document.getElementById("txt").value;
+
+document.getElementById("display").innerHTML +=`<div><span > ${mycurrentvalue} </span>
+    <button>+</button>
+    <button>-</button>
+    </div>`
+
+
+}
+
+function AllIncrement()
+{
+    let mydiv = document.getElementsByTagName("span");
+
+    let va = parseInt(document.getElementById("increment").value);
+
+    for(let i=0;i<mydiv.length;i++)
+    {
+        mydiv[i].innerHTML = parseInt(mydiv[i].innerHTML)+ va;
+    }
+
+}
+
+
+    </script>
+    
+</body>
+</html>
