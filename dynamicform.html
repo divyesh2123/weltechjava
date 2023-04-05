@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div>Basic Information</div>
+
+    <div>
+        <input type="text" name="fname" />
+        <input type="text" name="lname" />
+
+    </div>
+
+    <div id="education">
+
+        <div id="educationne">
+        <input type="text" name="uni" />
+        <input type="text" name="course" />
+        <input type="text" name="start" />
+        <input type="text" name="end" />
+        <button onclick="addMoreEducation()">AddMore</button>
+
+    </div>
+
+    </div>
+    
+</body>
+
+<script>
+
+function addMoreEducation()
+{
+    let d = document.getElementById("educationne").cloneNode(true);
+
+    console.log(d);
+
+   document.getElementById("education").appendChild(d);
+
+   
+
+
+}
+
+
+</script>
+</html>
