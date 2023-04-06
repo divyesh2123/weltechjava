@@ -18,7 +18,7 @@
 
     <div id="education">
 
-        <div id="educationne">
+        <div id="educationne" class="edu" >
         <input type="text" name="uni" />
         <input type="text" name="course" />
         <input type="text" name="start" />
@@ -26,6 +26,8 @@
         <button onclick="addMoreEducation()">AddMore</button>
 
     </div>
+
+    <button onclick="saveInfo()">DataSave</button>
 
     </div>
     
@@ -37,8 +39,21 @@ function addMoreEducation()
 {
     let d = document.getElementById("educationne").cloneNode(true);
 
-    console.log(d);
+   
 
+
+   let mynodes = d.querySelectorAll("input");
+
+   for(let i=0;i<mynodes.length;i++)
+   {
+    mynodes[i].value = "";
+   }
+
+    let button= document.createElement("button");
+    button.innerHTML = "Delete";
+    button.onclick = (event)=> {removeData(event) };
+
+    d.appendChild(button)
    document.getElementById("education").appendChild(d);
 
    
@@ -46,6 +61,56 @@ function addMoreEducation()
 
 }
 
+function removeData(event)
+{
+    event.target.parentElement.remove()
+}
+
+function saveInfo()
+{
+    let info= {
+
+    }
+    let data = document.getElementById("education").querySelectorAll(".edu");
+
+    let education = [];
+    for(let j=0;j<data.length;j++)
+    {
+       
+        let inputs = data[j].getElementsByTagName("input");
+        let obj = {};
+        for(let i=0;i<inputs.length;i++)
+        {
+           
+
+            if(inputs[i].type != "button")
+            {
+            obj[inputs[i].name] = inputs[i].value
+            
+
+            }
+
+          
+
+
+
+        }
+
+        education.push(obj);
+
+        
+       
+    
+    }
+
+    info["education"] = education;
+
+    console.log(info);
+
+    
+
+
+}
 
 </script>
 </html>
