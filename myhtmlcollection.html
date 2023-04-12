@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="test">This is the javascript
+        
+      <span>This is the first</span>   
+      <span>This is the last</span>   
+      <span>This is the first</span>   
+    </div>
+    <div id="test1">his is the javascript1</div>
+
+    <script>
+
+        let d= document.getElementsByTagName("div");
+
+        let t=       d[0].getElementsByTagName("span");
+
+        let sp = document.createElement("span");
+        sp.innerHTML = "Thi is the dynamic span";
+
+        d[0].append(sp)
+        
+
+        console.log(t.length);
+
+    </script>
+</body>
+</html>
