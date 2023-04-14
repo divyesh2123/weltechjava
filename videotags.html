@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div>
+
+  
+
+
+        <video width="320" height="240" controls>
+            <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
+            <source src="https://www.w3schools.com/html/movie.ogg" type="video/ogg">
+          Your browser does not support the video tag.
+          </video>
+    
+    </div>
+
+    <div>
+
+  
+
+
+        <video width="320" height="240" controls>
+            <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
+            <source src="https://www.w3schools.com/html/movie.ogg" type="video/ogg">
+          Your browser does not support the video tag.
+          </video>
+    
+    </div>
+
+    <div>
+
+  
+
+
+        <video width="320" height="240" controls>
+            <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
+            <source src="https://www.w3schools.com/html/movie.ogg" type="video/ogg">
+          Your browser does not support the video tag.
+          </video>
+    
+    </div>
+
+    <div>
+
+  
+
+
+        <video width="320" height="240" controls>
+            <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
+            <source src="https://www.w3schools.com/html/movie.ogg" type="video/ogg">
+          Your browser does not support the video tag.
+          </video>
+    
+    </div>
+
+    <div>
+
+  
+
+
+        <video width="320" height="240" controls>
+            <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
+            <source src="https://www.w3schools.com/html/movie.ogg" type="video/ogg">
+          Your browser does not support the video tag.
+          </video>
+
+    
+    </div>
+</body>
+
+<script>
+
+document.addEventListener("scroll",manageVideo);
+
+function manageVideo()
+{
+    let myvideos = document.querySelectorAll("video");
+
+    for(let i=0;i<myvideos.length;i++)
+    {
+        console.log(myvideos[i].offsetHeight + ' '+
+         myvideos[i].offsetTop+ 
+        ' '+ myvideos[i].offsetWidth + ' ' +
+        myvideos[i].scrollHeight +' ' 
+        );
+
+       
+    }
+}
+
+</script>
+</html>
