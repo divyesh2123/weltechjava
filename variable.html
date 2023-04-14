@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" id="t" />
+
+    <input type="button" value="Save" onclick="addTodoItem()"/>
+
+    <ul id="mobile"></ul>
+    <script>
+
+        let todos = [];
+
+        function addTodoItem()
+        {
+            let myitem = document.getElementById("t").value;
+
+            todos.push(myitem);
+
+            display();
+        }
+
+        function display()
+        {
+
+          let myarray =  todos.map(function(value) {
+
+                return `<li>${value}</li>`
+            })
+
+
+            document.getElementById("mobile").innerHTML = myarray.join("")
+
+        }
+
+
+      
+       
+
+    </script>
+
+    
+</body>
+</html>
