@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+async function* pageThroughResource(endpoint, authToken) {
+  async function* makeRequest(_endpoint) {
+    const response = await fetch(_endpoint, {
+      "headers": {
+        "Authorization": `Bearer ${authToken}`
+      }
+    });
+    if (!response.ok) {
+      throw new Error(await response.text());
+    }
+
+    const page = await response.json()
+
+    yield page;
+
+    if (page.next) {
+      yield * makeRequest(page.next);
+    }
+  }
+
+  yield * makeRequest(endpoint);
+}
+
+async function* loadAlbums(artistId, authToken) {
+  const endpoint = `https://api.spotify.com/v1/artists/${artistId}/albums?limit=20&include_groups=album`
+  const result = pageThroughResource(endpoint, authToken);
+
+  for await (const page of result) {
+    for (let album of page.items) {
+      yield album;
+    }
+  }
+}
+
+for await (const album of loadAlbums("6sFIWsNpZYqfjUpaCgueju", YOUR_OWN_AUTH_TOKEN)) {
+  console.log(album.name);
+}
+
+    </script>
+    
+</body>
+</html>

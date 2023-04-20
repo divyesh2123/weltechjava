@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <a href="page1.html" >Page1</a>
+    <a href="page2.html" >Page2</a>
+
+    <form>
+
+        <input type="text"  />
+        <input type="text"  />
+
+
+    </form>
+
+    <script>
+
+window.addEventListener('beforeunload', (event) => {
+
+    let d = document.getElementsByTagName("input");
+    let isEditEmpty= false;
+
+    for(i=0;i<d.length;i++)
+    {
+        if(d[i].value == "")
+        {
+            isEditEmpty= true;
+        }
+    }
+
+    if(isEditEmpty)
+    {
+  event.returnValue = `Are you sure you want to leave?`;
+    }
+});
+
+
+    </script>
+
+
+</body>
+</html>

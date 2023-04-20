@@ -1,4 +1,7 @@
          //create the function
+        
+        
+        
          function Iterator(profile) {
             //set the index to 0
             let nextIndex = 0;
