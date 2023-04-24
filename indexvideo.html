@@ -6,7 +6,7 @@
 
 <p>Assign an "onseeking" event to a video element:</p>
 
-<video controls onseeking="myFunction(event)">
+<video controls onpause="mypause()" id="myvideo" onloadeddata	="mytimeset()">
   <source src="https://www.w3schools.com/jsref/mov_bbb.mp4" type="video/mp4">
   <source src="https://www.w3schools.com/jsref/mov_bbb.mp4" type="video/ogg">
   Your browser does not support HTML5 video.
@@ -23,6 +23,21 @@ function myFunction(event) {
     console.log(event);
   document.getElementById("demo").innerHTML +=  "Seek operation began! ";
 }
+
+function mypause()
+{
+  let time = document.getElementById("myvideo").currentTime;
+  localStorage.setItem("time",time);
+
+}
+function mytimeset()
+{
+  alert("d");
+  let t =  localStorage.getItem("time");
+  document.getElementById("myvideo").currentTime = t;
+}
+
+
 </script>
 
 </body> 

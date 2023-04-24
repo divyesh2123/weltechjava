@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+
+        fetch("https://data.covid19india.org/v4/min/data.min.json").then(y=>y.json())
+        .then(y=> {
+
+            for (const key in  y.GJ.districts) {
+                
+                console.log(key)
+                //console.log(y.GJ.districts[key])
+
+               // console.log(y.GJ.districts[key].delta.confirmed)
+            }
+          
+        })
+
+    </script>
+
+</body>
+</html>
