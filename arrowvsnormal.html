@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button name="23"  id="test">Click</button>
+    
+
+    <script>
+
+        let d = "This is the string"
+
+        
+        String.prototype.fetchFirstW = function() {
+
+            return this.split(" ")[0];
+
+            
+        }
+
+        console.log(d.fetchFirstW())
+
+            class Display
+            {
+
+                name = "d"
+
+                constructor()
+                {
+                    this.disInfo = this.disInfo.bind(this);
+                }
+                disInfo()
+                {
+                    console.log(this.name)
+                }
+
+                disarraow = ()=> {
+
+                    console.log(this.name);
+
+                }
+            }
+
+            let p = new Display();
+
+            document.getElementById("test").addEventListener("click",p.disInfo);
+
+
+
+    </script>
+</body>
+</html>
